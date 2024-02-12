@@ -1,7 +1,5 @@
 # Array Method Extensions
 
----
-
 ## Index
 - [Installation](#installation)
 - [Usage](#usage)
@@ -10,19 +8,15 @@
   - [mapBy](#mapBy)
   - [sum](#sum)
 
----
-
 ## Installation
 ```sh
 yarn add @codura/array-method-extension
 ```
----
 
 ## Usage
 ```ts
 export * from '@codura/array-method-extension';
 ```
----
 
 ## Methods
 
@@ -50,8 +44,6 @@ const users = [
 const userNamesById = users.groupBy(user => user.group, user => user.name);
 ```
 
----
-
 ### mapBy
 
 Map an array to a map using a **key function**
@@ -75,8 +67,6 @@ const users = [
 ];
 const userNamesById = users.mapBy(user => user.id, user => user.name);
 ```
-
----
 
 ### sum
 
