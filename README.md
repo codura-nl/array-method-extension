@@ -11,12 +11,13 @@
   - [sum](#sum)
 
 ## Installation
-### Using Yarn
+
+Using [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
 ```sh
 yarn add @codura/array-method-extension
 ```
 
-### Using npm
+Using [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 ```shell
 npm install @codura/array-method-extension
 ```

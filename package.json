@@ -1,6 +1,6 @@
 {
   "name": "@codura/array-method-extension",
-  "description": "Extra array methods for JavaScript",
+  "description": "Extra array methods for JavaScript and TypeScript",
   "version": "1.0.4",
   "author": "Jan Willem Harmelink",
   "license": "GPL-3.0-only",
@@ -11,6 +11,20 @@
     "type": "git",
     "url": "git+https://github.com/codura-nl/array-method-extension.git"
   },
+  "keywords": [
+    "add",
+    "array",
+    "decimal.js",
+    "equals",
+    "group",
+    "groupBy",
+    "map",
+    "mapBy",
+    "merge",
+    "mergeBy",
+    "prototype",
+    "sum"
+  ],
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "build:watch": "tsc --project tsconfig.json --watch",
