@@ -20,7 +20,7 @@
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
     "lint:report": "eslint --output-file=reports/eslint.json --format=json 'src/**/*.{js,ts}'",
     "prebuild": "rimraf dist",
-    "postbuild": "cp package.json dist",
+    "postbuild": "cp package.json README.md dist",
     "release": "npx semantic-release",
     "test": "jest",
     "test:cov": "jest --coverage",

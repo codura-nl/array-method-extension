@@ -9,8 +9,14 @@
   - [sum](#sum)
 
 ## Installation
+### Using Yarn
 ```sh
 yarn add @codura/array-method-extension
+```
+
+### Using npm
+```shell
+npm install @codura/array-method-extension
 ```
 
 ## Usage
