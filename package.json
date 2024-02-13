@@ -1,7 +1,7 @@
 {
   "name": "@codura/array-method-extension",
   "description": "Extra array methods for JavaScript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Jan Willem Harmelink",
   "license": "GPL-3.0-only",
   "publishConfig": {
