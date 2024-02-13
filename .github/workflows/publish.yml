@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-#    paths-ignore:
-#      - '.github/**'
+    paths-ignore:
+      - '.github/**'
 
 env:
   NODE_AUTH_TOKEN: ${{ secrets.GH_READ_TOKEN }}
@@ -22,15 +22,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
       - name: install
         run: yarn install
-#      - name: test
-#        run: yarn test
+      - name: test
+        run: yarn test
       - name: build
         run: yarn build
       - name: release
