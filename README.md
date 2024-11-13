@@ -1,10 +1,16 @@
 # Array Method Extensions
 
+This package provides a set of useful methods to extend the functionality of the `Array` class in TypeScript.
+
+Using these methods, you can easily group, map, distinct, merge, and sum arrays. It reduces code complexity and makes
+your code more readable.
+
 ## Index
 - [Installation](#installation)
 - [Usage](#usage)
 - [Methods](#methods)
-  - [equals](#equals) 
+  - [distinctBy](#distinctBy)
+  - [equals](#equals)
   - [groupBy](#groupBy)
   - [mapBy](#mapBy)
   - [mergeBy](#mergeBy)
@@ -13,21 +19,66 @@
 ## Installation
 
 Using [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
+
 ```sh
 yarn add @codura/array-method-extension
 ```
 
 Using [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
 ```shell
 npm install @codura/array-method-extension
 ```
 
 ## Usage
+
 ```ts
 export * from '@codura/array-method-extension';
 ```
 
 ## Methods
+
+### distinctBy
+
+Remove duplicates from an `Array` using a **key function**
+
+```ts
+const usersWithDuplicates = [
+  { id: '1', gender: 'male', name: 'John' },
+  { id: '2', gender: 'female', name: 'Jane' },
+  { id: '1', gender: 'male', name: 'John' },
+];
+const usersWithoutDuplicates = usersWithDuplicates.distinctBy(user => user.id); // [{ id: '1', gender: 'male', name: 'John' }, { id: '2', gender: 'female', name: 'Jane' }]
+```
+
+Remove duplicates from an `Array` using a **key function** and a **value function**
+
+```ts
+const usersWithDuplicates = [
+  { id: '1', gender: 'male', name: 'John' },
+  { id: '2', gender: 'female', name: 'Jane' },
+  { id: '1', gender: 'male', name: 'John' },
+];
+const namesWithoutDuplicates = usersWithDuplicates.distinctBy(user => user.id, user => user.name); // ['John', 'Jane']
+```
+
+Check if two arrays, containing decimals, are equal using [decimal.js](https://www.npmjs.com/package/decimal.js)
+
+```ts
+import Decimal from 'decimal.js';
+
+const decimals1 = [
+  new Decimal(23.56457),
+  new Decimal(12.34543),
+  new Decimal(34.12345),
+];
+const decimals2 = [
+  new Decimal(12.34543),
+  new Decimal(23.56457),
+  new Decimal(34.12345),
+];
+const areEqual = decimals1.equals(decimals2); // true
+```
 
 ### equals
 
@@ -72,9 +123,9 @@ Group an `Array` to a `Map` using a **key function**
 
 ```ts
 const users = [
-  {id: '1', gender: 'male', name: 'John'},
-  {id: '2', gender: 'female', name: 'Jane'},
-  {id: '3', gender: 'male', name: 'Joe'},
+  { id: '1', gender: 'male', name: 'John' },
+  { id: '2', gender: 'female', name: 'Jane' },
+  { id: '3', gender: 'male', name: 'Joe' },
 ];
 const usersByGroup = users.groupBy(user => user.gender); // Map([['male', [{id: '1', gender: 'male', name: 'John'}, {id: '3', gender: 'male', name: 'Joe'}]], ['female', [{id: '2', gender: 'female, name: 'Jane'}]]])
 ```
@@ -83,9 +134,9 @@ Group an `Array` to a `map` using a **key function** and a **value function**
 
 ```ts
 const users = [
-  {id: '1', gender: 'male', name: 'John'},
-  {id: '2', gender: 'female', name: 'Jane'},
-  {id: '3', gender: 'male', name: 'Joe'},
+  { id: '1', gender: 'male', name: 'John' },
+  { id: '2', gender: 'female', name: 'Jane' },
+  { id: '3', gender: 'male', name: 'Joe' },
 ];
 const userNamesById = users.groupBy(user => user.gender, user => user.name); // Map([['male', ['John', 'Joe']], ['female', ['Jane']]])
 ```
@@ -96,9 +147,9 @@ Map an `Array` to a `map` using a **key function**
 
 ```ts
 const users = [
-  {id: '1', name: 'John'},
-  {id: '2', name: 'Jane'},
-  {id: '3', name: 'Joe'},
+  { id: '1', name: 'John' },
+  { id: '2', name: 'Jane' },
+  { id: '3', name: 'Joe' },
 ];
 const usersById = users.mapBy(user => user.id); // Map([['1', {id: '1', gender: 'male', name: 'John'}], ['2', {id: '2', gender: 'female, name: 'Jane'}], ['3', {id: '3', gender: 'male', name: 'Joe'}]])
 ```
@@ -107,9 +158,9 @@ Map an `Array` to a `map` using a **key function** and a **value function**
 
 ```ts
 const users = [
-  {id: '1', name: 'John'},
-  {id: '2', name: 'Jane'},
-  {id: '3', name: 'Joe'},
+  { id: '1', name: 'John' },
+  { id: '2', name: 'Jane' },
+  { id: '3', name: 'Joe' },
 ];
 const userNamesById = users.mapBy(user => user.id, user => user.name); // Map([['1', 'John'], ['2', 'Jane'], ['3', 'Joe']])
 ```
