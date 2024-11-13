@@ -3,7 +3,7 @@ export {};
 if (!Array.prototype.distinctBy) {
   Array.prototype.distinctBy = function <K, T, L>(identifier: (item: T) => K, mapper?: (item: T) => L): Array<T | L> {
     if (!mapper) {
-      return this.reduce((store: Map<K, T>, item: T) => {
+      const map = this.reduce((store: Map<K, T>, item: T) => {
         const key = identifier(item);
 
         if (!store.has(key)) {
@@ -11,10 +11,12 @@ if (!Array.prototype.distinctBy) {
         }
 
         return store;
-      }, new Map<K, T>()).values().toArray();
+      }, new Map<K, T>());
+
+      return Array.from(map.values());
     }
 
-    return this.reduce((store: Map<K, L>, item: T) => {
+    const map = this.reduce((store: Map<K, L>, item: T) => {
       const key = identifier(item);
 
       if (!store.has(key)) {
@@ -22,6 +24,8 @@ if (!Array.prototype.distinctBy) {
       }
 
       return store;
-    }, new Map<K, L>()).values().toArray();
+    }, new Map<K, L>());
+
+    return Array.from(map.values());
   };
 }

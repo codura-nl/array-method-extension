@@ -14,4 +14,11 @@ describe('distinctBy', () => {
       new DistinctiveItem('2', 9.567),
     ]);
   });
+
+  test('by id with map', () => {
+    const distinctiveItems = [new DistinctiveItem('1', 4), new DistinctiveItem('2', 9.567), new DistinctiveItem('1', 4)];
+
+    expect(distinctiveItems.distinctBy(distinctiveItem => distinctiveItem.id, distinctiveItem => distinctiveItem.value))
+      .toEqual([4, 9.567]);
+  });
 });
